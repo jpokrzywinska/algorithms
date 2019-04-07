@@ -1,48 +1,33 @@
 import {swap} from "./ArrayUtils";
 
 let array = [4, 7, 2, 14, 22, 1, 8];
-quickSort(array);
-
-
-function quickSort(array) {
-    console.info(sort(array));
-}
+console.info(sort(array));
 
 function sort(array) {
     if (isSorted(array)) {
         return array;
     }
+    let pivotIndex = Math.round(array.length / 2) - 1,
+        pivot = array[pivotIndex],
+        j = 0;
 
-    let valueToCompareIndex = Math.round(array.length / 2) - 1,
-        valueToCompare = array[valueToCompareIndex],
-        j = 0,
-        array1 = [],
-        array2 = [];
-
-    swap(array, valueToCompareIndex, array.length - 1);
+    swap(array, pivotIndex, array.length - 1);
 
     for (let i = 0; i < array.length - 1; i++) {
-        if (array[i] < valueToCompare) {
-            let temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+        if (array[i] < pivot) {
+            swap(array, i, j);
             j++;
         }
     }
     swap(array, j, array.length - 1);
 
-    array1 = array.slice(0, j);
-    array2 = array.slice(j + 1, array.length);
+    const head = sort(array.slice(0, j));
+    const tail = sort(array.slice(j + 1, array.length));
 
-    return sort(array1).concat(valueToCompare, sort(array2));
+    return head.concat(pivot, tail);
 
 }
 
 function isSorted(array) {
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] > array[i + 1]) {
-            return false;
-        }
-    }
-    return true;
+    return array.every((value, index) => value < array[index + 1]);
 }

@@ -1,0 +1,24 @@
+- algorithms
+-- merge sort
+-- bubble sort
+
+- data structures
+-- array list
+-- linked list
+-- binary tree
+-- hash table
+
+
+- string exercises
+-- How to check if two Strings are anagrams of each other?
+-- How to find duplicate characters in a String?
+-- How to check if a String contains only digits?
+-- How to check if a String is palindroms?
+-- How to remove duplicate characters from String?
+-- Write a program to check if a String contains another String like indexOf ()?
+-- How to return highest occurred character in a String?
+-- Write a program to find the longest palindrome in a string?
+
+
+- regex
+-- Create password validator - big
