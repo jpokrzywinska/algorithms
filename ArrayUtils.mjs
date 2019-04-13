@@ -3,3 +3,12 @@ export function swap(array, index1, index2) {
     array[index1] = array[index2];
     array[index2] = temp;
 }
+
+export function isSorted(array) {
+    return array.every((value, index) => {
+        if (index === array.length - 1) {
+            return true;
+        }
+        return value < array[index + 1]
+    });
+}

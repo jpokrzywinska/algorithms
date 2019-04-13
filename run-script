@@ -1,1 +1,1 @@
-node --experimental-modules quick-sort.mjs
+node --experimental-modules $1

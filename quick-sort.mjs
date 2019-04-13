@@ -1,4 +1,4 @@
-import {swap} from "./ArrayUtils";
+import {swap,isSorted} from "./ArrayUtils";
 
 let array = [4, 7, 2, 14, 22, 1, 8];
 console.info(sort(array));
@@ -28,6 +28,3 @@ function sort(array) {
 
 }
 
-function isSorted(array) {
-    return array.every((value, index) => value < array[index + 1]);
-}
