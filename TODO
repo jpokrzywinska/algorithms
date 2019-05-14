@@ -1,6 +1,7 @@
 - algorithms
--- merge sort
--- bubble sort
+** merge-sort
+** bubble-sort
+** quick-sort
 
 - data structures
 -- array list
