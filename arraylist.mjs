@@ -17,10 +17,11 @@ class ArrayList {
     }
 
     addAt(index, el) {
-        //TODO spr czy istnieje element o danym indeksie (index < size)
-        this.array[index] = el;
-        this.size++;
-        this.resize();
+        if (index < this.size) {
+            this.array[index] = el;
+            this.size++;
+            this.resize();
+        }
     }
 
     resize() {
@@ -29,9 +30,11 @@ class ArrayList {
             this.array = this.copy(this.array);
             this.fillWithEmptySpots(this.array, this.maxSize);
         } else if (this.size < 0.3 * this.maxSize) {
-            this.maxSize = this.maxSize < MIN_SIZE ? MIN_SIZE : this.maxSize / 2;
-            this.array = this.copy(this.array);
-            this.fillWithEmptySpots(this.array, this.maxSize);
+            this.maxSize = this.size <= MIN_SIZE ? MIN_SIZE : this.maxSize / 2;
+            if (this.maxSize != MIN_SIZE) {
+                this.array = this.copy(this.array);
+                this.fillWithEmptySpots(this.array, this.maxSize);
+            }
         }
     }
 
@@ -43,7 +46,7 @@ class ArrayList {
 
     copy(array) {
         const newArray = [];
-        for (let i = 0; i < array.size; i++) {
+        for (let i = 0; i < array.length; i++) {
             newArray[i] = array[i];
         }
         return newArray;
@@ -57,24 +60,55 @@ class ArrayList {
         return this.array[index];
     }
 
-    // todo remove index
     remove(index) {
-        this.array[index] = undefined;
+        if (index < this.size) {
+            this.array = this.removeFromArray(index, this.array);
+            this.size--;
+            this.resize();
+        }
+    }
+
+    removeObj(obj) {
+        for (let i = 0; i < this.array.length; i++) {
+            if (this.array[i] === obj) {
+                this.removeFromArray(i, this.array);
+            }
+        }
         this.size--;
         this.resize();
     }
 
-    // todo remove object
+    removeFromArray(index, array) {
+        for (let i = index; i < array.length; i++) {
+            if (i === array.length - 1) {
+                return array;
+            }
+            array[i] = array[i + 1];
+        }
+        return array;
+    }
+
 
     print() {
         const result =
-            this.array.reduce((result, elem, index) => result + ', ' + elem);
+            this.array.reduce((result, elem) => result + ', ' + elem);
         console.log(result);
     }
 }
 
 let ar = new ArrayList();
-ar.add(5);
-ar.add("3a");
+ar.add(4);
+ar.add("d");
+ar.add(3);
+ar.add(33);
+ar.add(76);
+ar.add(55);
+ar.add(55);
+ar.add(55);
+ar.add(55);
+
+// ar.remove(1);
+
 ar.print();
-console.log(ar.get(2));
+
+// console.log(ar.get(0));
