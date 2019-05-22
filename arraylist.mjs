@@ -1,5 +1,7 @@
 const MIN_SIZE = 10;
-
+// TODO nazwa pliku z duzej litery jak to jest klasa
+//TODO testy do wszystkich klas (przyklad anagrams.spec.js)
+// TODO stworzyc osobny folder na sturktury danych (data-structure) i algorytmy (algorithms)
 class ArrayList {
 
     constructor() {

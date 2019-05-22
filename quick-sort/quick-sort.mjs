@@ -1,9 +1,9 @@
-import {swap,isSorted} from "./ArrayUtils";
+import {swap,isSorted} from "../ArrayUtils.mjs";
 
 let array = [4, 7, 2, 14, 22, 1, 8];
 console.info(sort(array));
 
-function sort(array) {
+export function sort(array) {
     if (isSorted(array)) {
         return array;
     }
