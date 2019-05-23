@@ -3,6 +3,7 @@ import {assert, expect, should} from "chai";
 
 describe('quick sort test', () => {
     it('shoud successfully sort array', () => {
+
         //given
         const array = [1, 4, 3, 5, 2];
 
@@ -18,6 +19,7 @@ describe('quick sort test', () => {
 
 describe('quick sort test', () => {
     it('shoud successfully sort array of chars', () => {
+
         //given
         const string = ['a', 'g', 't', 'z', 'b', 'e'];
 
@@ -33,9 +35,11 @@ describe('quick sort test', () => {
 
 describe('quick sort test', () => {
     it('shoud successfully sort word', () => {
+
         //given
         let word1 = "dormitory";
         word1 = word1.split('');
+
         //when
         const result = sort(word1);
 

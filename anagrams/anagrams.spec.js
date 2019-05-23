@@ -1,7 +1,6 @@
 import {checkAnagrams} from "./anagrams";
 import {expect, should} from "chai";
 
-// TODO sprawic by test przeszedl i napisac jakies jeszcze testy ktore pokryja podstawowe corner-case'y
 describe('Anagrams', () => {
     it('two words are anagrams when they consist of same letters ommiting spaces', () => {
         //given
@@ -21,6 +20,20 @@ describe('Anagrams', () => {
         //give
         const word1 = "Dormitory";
         const word2 = "Dirty rooeem";
+
+        //when
+        const result = checkAnagrams(word1, word2);
+
+        //then
+        expect(result).to.be.false;
+    });
+});
+
+describe('Test', () => {
+    it('should return false when words contain different chars', () => {
+        //given
+        const word1 = "Dormitory";
+        const word2 = "Parkowych";
 
         //when
         const result = checkAnagrams(word1, word2);
