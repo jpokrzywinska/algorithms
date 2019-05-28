@@ -1,9 +1,9 @@
-import {swap, isSorted} from "./ArrayUtils.mjs";
+import {isSorted} from "../ArrayUtils.mjs";
 
 let array = [4, 8, 2, 7, 9, 10];
 console.log(divide(array));
 
-function divide(array) {
+export function divide(array) {
     console.log("DIVIDING: " + array);
     if (isSorted(array)) {
         return array;

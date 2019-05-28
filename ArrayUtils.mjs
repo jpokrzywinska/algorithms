@@ -9,6 +9,6 @@ export function isSorted(array) {
         if (index === array.length - 1) {
             return true;
         }
-        return value < array[index + 1]
+        return value <= array[index + 1]
     });
 }

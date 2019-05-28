@@ -1,9 +1,7 @@
-import {isSorted, swap} from "./ArrayUtils.mjs";
+import {isSorted, swap} from "../ArrayUtils.mjs";
 
-let array = [3, 1, 7, 0, 9];
-console.info(sort(array));
+export function sort(array) {
 
-function sort(array) {
     if (isSorted(array)) {
         return array;
     }

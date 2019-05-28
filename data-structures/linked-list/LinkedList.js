@@ -1,10 +1,10 @@
 class LinkedList {
-    constructor(){
+    constructor() {
         // TODO jaki array skoro to linked lista???
-        this.array = [];
+        this.list = {};
     }
 
-    add(elem){
+    add(elem) {
 
     }
 }

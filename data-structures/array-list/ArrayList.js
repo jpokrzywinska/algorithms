@@ -1,8 +1,6 @@
 const MIN_SIZE = 10;
-// TODO nazwa pliku z duzej litery jak to jest klasa
-//TODO testy do wszystkich klas (przyklad anagrams.spec.js)
-// TODO stworzyc osobny folder na sturktury danych (data-structure) i algorytmy (algorithms)
-class ArrayList {
+
+export class ArrayList {
 
     constructor() {
         this.maxSize = MIN_SIZE;
@@ -21,8 +19,8 @@ class ArrayList {
     addAt(index, el) {
         if (index < this.size) {
             this.array[index] = el;
-            this.size++;
-            this.resize();
+            // this.size++;
+            // this.resize();
         }
     }
 
@@ -98,19 +96,3 @@ class ArrayList {
     }
 }
 
-let ar = new ArrayList();
-ar.add(4);
-ar.add("d");
-ar.add(3);
-ar.add(33);
-ar.add(76);
-ar.add(55);
-ar.add(55);
-ar.add(55);
-ar.add(55);
-
-// ar.remove(1);
-
-ar.print();
-
-// console.log(ar.get(0));
