@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "training",
   "scripts": {
-    "test": "mocha --require babel-register ./**/*.spec.js"
+    "test": "mocha --require babel-register ./**/**/*.spec.js"
   },
   "babel": {
     "presets": [
