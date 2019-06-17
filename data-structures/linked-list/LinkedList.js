@@ -56,17 +56,22 @@ export class LinkedList {
 
     removeObj(obj) {
         let temp = this.first;
-        for (let i = 0; i < this.size; i++) {
-            if (temp.value === obj) {
-                let actual = temp;
+        if (temp.value === obj) {
+            temp.value = temp.next.value;
+            this.size--;
+            return;
+        }
+        for (let i = 1; i < this.size; i++) {
+            let before = temp;
+            if (temp.next.value === obj) {
+                let actual = temp.next;
                 before.next = actual.next;
                 this.size--;
                 return;
-
             }
-            let before = temp;
             temp = temp.next;
         }
+        throw Error("Element doesnt exist");
     }
 }
 

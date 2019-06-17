@@ -125,6 +125,28 @@ describe('linkedList test', () => {
 });
 
 describe('linkedList test', () => {
+    it('shoud successfully remove element with given value - first element', () => {
+
+        //given
+        const list = new LinkedList();
+        const el = 1;
+        const el2 = 2;
+        const el3 = 3;
+        list.add(el);
+        list.add(el2);
+        list.add(el3);
+
+        //when
+        list.removeObj(el);
+
+        //then
+        const expectedSize = 2;
+        expect(list.size).to.eql(expectedSize);
+        expect(list.get(0)).to.eql(el2);
+    });
+});
+
+describe('linkedList test', () => {
     it('shoud successfully remove element with given value', () => {
 
         //given
@@ -143,5 +165,31 @@ describe('linkedList test', () => {
         const expectedSize = 2;
         expect(list.size).to.eql(expectedSize);
         expect(list.get(1)).to.eql(el3);
+    });
+});
+
+describe('linkedList test', () => {
+    it('shoud successfully remove element with given value - last element', () => {
+
+        //given
+        const list = new LinkedList();
+        const el = 1;
+        const el2 = 2;
+        const el3 = 3;
+        const el4 = 4;
+        const el5 = 5;
+        list.add(el);
+        list.add(el2);
+        list.add(el3);
+        list.add(el4);
+        list.add(el5);
+
+        //when
+        list.removeObj(el5);
+
+        //then
+        const expectedSize = 4;
+        expect(list.size).to.eql(expectedSize);
+        expect(list.get(3)).to.eql(el4);
     });
 });
