@@ -5,13 +5,13 @@
 
 - data structures
 ** array list
--- linked list
--- binary tree
+** linked list
+** binary tree
 -- hash table
 
 
 - string exercises
--- How to check if two Strings are anagrams of each other?
+** How to check if two Strings are anagrams of each other?
 -- How to find duplicate characters in a String?
 -- How to check if a String contains only digits?
 -- How to check if a String is palindroms?
