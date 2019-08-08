@@ -1,8 +1,8 @@
-import {sort} from "./bubble-sort.mjs";
+import {sort} from "./bubble-sort";
 import {assert, expect, should} from "chai";
 
 describe('bubble sort test', () => {
-    it('shoud successfully sort array', () => {
+    it('should successfully sort array', () => {
 
         //given
         const array = [1, 4, 3, 5, 2, 2];

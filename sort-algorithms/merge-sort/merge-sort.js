@@ -1,4 +1,4 @@
-import {isSorted} from "../ArrayUtils.mjs";
+import {isSorted} from "../../ArrayUtils.js";
 
 let array = [4, 8, 2, 7, 9, 10];
 console.log(divide(array));

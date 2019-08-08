@@ -1,4 +1,4 @@
-import {swap,isSorted} from "../ArrayUtils.mjs";
+import {swap,isSorted} from "../../ArrayUtils.js";
 
 let array = [4, 7, 2, 14, 22, 1, 8];
 console.info(sort(array));

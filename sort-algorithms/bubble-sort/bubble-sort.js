@@ -1,4 +1,4 @@
-import {isSorted, swap} from "../ArrayUtils.mjs";
+import {isSorted, swap} from "../../ArrayUtils.js";
 
 export function sort(array) {
 

@@ -1,4 +1,4 @@
-import {divide} from "./merge-sort.mjs";
+import {divide} from "./merge-sort";
 import {assert, expect, should} from "chai";
 
 describe('bubble sort test', () => {

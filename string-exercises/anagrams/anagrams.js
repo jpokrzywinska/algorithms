@@ -1,4 +1,4 @@
-import {sort} from "../quick-sort/quick-sort.mjs";
+import {sort} from "../../sort-algorithms/quick-sort/quick-sort";
 
 export function checkAnagrams(word1, word2) {
     word1 = deleteWhiteSpaces(word1);

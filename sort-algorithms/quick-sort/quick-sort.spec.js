@@ -1,4 +1,4 @@
-import {sort} from "./quick-sort.mjs";
+import {sort} from "./quick-sort";
 import {assert, expect, should} from "chai";
 
 describe('quick sort test', () => {
