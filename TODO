@@ -19,7 +19,7 @@
 -- Write a program to check if a String contains another String like indexOf ()?
 -- How to return highest occurred character in a String?
 -- Write a program to find the longest palindrome in a string?
--- roman <-> greek number converter
+** roman <-> greek number converter
 --
 
 - design patterns

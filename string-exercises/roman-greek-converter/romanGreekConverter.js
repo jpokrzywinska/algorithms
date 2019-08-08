@@ -1,54 +1,62 @@
-// TODO there are better names for this arg instead of number
 // TODO what happens when someone provide incorrect number e.g. ABD
-export function toGreekNumber(number) {
+export function toGreekNumber(romanNumber) {
+    // if ()) {
+    //     throw new Error("Incorrect number");
+    // }
     let sum = 0;
-    number = number.split('');
+    romanNumber = romanNumber.split('');
     //TODO try to use reduce instead of for
-    for (let i = 0; i < number.length - 1; i++) {
-        if (getGreekValue(number[i]) < getGreekValue(number[i + 1])) {
-            sum -= getGreekValue(number[i]);
+    for (let i = 0; i < romanNumber.length - 1; i++) {
+        if (getGreekValue(romanNumber[i]) < getGreekValue(romanNumber[i + 1])) {
+            sum -= getGreekValue(romanNumber[i]);
         }
         else {
-            sum += getGreekValue(number[i]);
+            sum += getGreekValue(romanNumber[i]);
         }
     }
-    sum += getGreekValue(number[number.length - 1]);
+    sum += getGreekValue(romanNumber[romanNumber.length - 1]);
     return sum;
 }
 
 
-export function toRomanNumber(number) {
+export function toRomanNumber(greekNumber) {
 
-    // TODO  are "m" and "rest" really roman signs?
-    //TODO if I am not wrong these are numbers of occurances - try to use better names
-    //roman signs
-    let m, rest, d, l, c, x, v;
+    const values = {
+        THOUSAND: 1000,
+        FIVE_HUNDRED: 500,
+        HUNDRED: 100,
+        FIFTY: 50,
+        TEN: 10,
+        FIVE: 5
+    };
+
+    let thousand, fiveHundred, fifty, hundred, ten, five, rest;
 
     // TODO If you make simmilar operations each time this means there could be a loop
     //  try to make a loop instead, maybe going through all the enum values
-    m = Math.floor(number / getGreekValue('M'));
-    rest = number % getGreekValue('M');
-    d = 0;
-    if (rest >= getGreekValue('D')) {
-        d = 1;
-        rest = rest - getGreekValue('D');
+    thousand = Math.floor(greekNumber / values.THOUSAND);
+    rest = greekNumber % values.THOUSAND;
+    fiveHundred = 0;
+    if (rest >= values.FIVE_HUNDRED) {
+        fiveHundred = 1;
+        rest = rest - values.FIVE_HUNDRED;
     }
-    c = Math.floor(rest / getGreekValue('C'));
-    rest = rest % getGreekValue('C');
-    l = 0;
-    if (rest >= getGreekValue('L')) {
-        l = 1;
-        rest = rest - getGreekValue('L');
+    hundred = Math.floor(rest / values.HUNDRED);
+    rest = rest % values.HUNDRED;
+    fifty = 0;
+    if (rest >= values.FIFTY) {
+        fifty = 1;
+        rest = rest - values.FIFTY;
     }
-    x = Math.floor(rest / getGreekValue('X'));
-    rest = rest % getGreekValue('X');
-    v = 0;
-    if (rest >= getGreekValue('V')) {
-        v = 1;
-        rest = rest - getGreekValue('V');
+    ten = Math.floor(rest / values.TEN);
+    rest = rest % values.TEN;
+    five = 0;
+    if (rest >= values.FIVE) {
+        five = 1;
+        rest = rest - values.FIVE;
     }
 
-    let romanArray = addRomanSignsToArray(m, d, c, l, x, v, rest);
+    let romanArray = addRomanSignsToArray(thousand, fiveHundred, hundred, fifty, ten, five, rest);
 
     romanArray = romanArray.toString();
     for (let i = 0; i < romanArray.length; i++) {
@@ -62,40 +70,26 @@ function addRomanSignsToArray(m, d, c, l, x, v, rest) {
     let romanArray = [];
     addRomanValue(m, romanArray, 'M');
     addRomanValue(d, romanArray, 'D');
-    // TODO If you make simmilar operations each time this means there could be a loop
-    //  every time you check whetere the occurance equals 4 then u assign letter + higher letter
-    //  its not hard to make it in a loop
-    if (c !== 0) {
-        // TODO what does 4 mean? extract to constant variable
-        if (c === 4) {
-            romanArray.push('CD');
-        }
-        else {
-            addRomanValue(c, romanArray, 'C');
-        }
-    }
+    addRomanValue(c, romanArray, 'C');
     addRomanValue(l, romanArray, 'L');
-    if (x !== 0) {
-        if (x === 4) {
-            romanArray.push('XL');
-        }
-        else {
-            addRomanValue(x, romanArray, 'X');
-        }
-    }
+    addRomanValue(x, romanArray, 'X');
     addRomanValue(v, romanArray, 'V');
-    if (rest !== 0) {
-        if (rest === 4) {
-            romanArray.push('IV');
-        }
-        else
-            addRomanValue(rest, romanArray, 'I');
-    }
+    addRomanValue(rest, romanArray, 'I');
     return romanArray;
 }
 
 function addRomanValue(value, romanNumber, letter) {
-    if (value !== 0) {
+    let specificValue = 4;
+    if (letter === 'C' && value === specificValue) {
+        romanNumber.push('CD');
+    }
+    else if (letter === 'X' && value === specificValue) {
+        romanNumber.push('XL');
+    }
+    else if (letter === 'I' && value === specificValue) {
+        romanNumber.push('IV');
+    }
+    else if (value !== 0) {
         for (let i = 0; i < value; i++) {
             romanNumber.push(letter);
         }

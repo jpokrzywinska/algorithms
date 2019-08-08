@@ -7,6 +7,8 @@ describe('Roman -> Greek converter', () => {
         expect(toGreekNumber("MCLXIV")).to.eql(1164);
         expect(toGreekNumber("XL")).to.eql(40);
         expect(toGreekNumber("XIV")).to.eql(14);
+        expect(toGreekNumber("IV")).to.eql(4);
+        expect(toGreekNumber("XL")).to.eql(40);
     });
 });
 describe('Greek -> Roman converter', () => {
