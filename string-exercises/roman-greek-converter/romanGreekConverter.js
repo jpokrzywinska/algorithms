@@ -1,6 +1,9 @@
+// TODO there are better names for this arg instead of number
+// TODO what happens when someone provide incorrect number e.g. ABD
 export function toGreekNumber(number) {
     let sum = 0;
     number = number.split('');
+    //TODO try to use reduce instead of for
     for (let i = 0; i < number.length - 1; i++) {
         if (getGreekValue(number[i]) < getGreekValue(number[i + 1])) {
             sum -= getGreekValue(number[i]);
@@ -16,9 +19,13 @@ export function toGreekNumber(number) {
 
 export function toRomanNumber(number) {
 
+    // TODO  are "m" and "rest" really roman signs?
+    //TODO if I am not wrong these are numbers of occurances - try to use better names
     //roman signs
     let m, rest, d, l, c, x, v;
 
+    // TODO If you make simmilar operations each time this means there could be a loop
+    //  try to make a loop instead, maybe going through all the enum values
     m = Math.floor(number / getGreekValue('M'));
     rest = number % getGreekValue('M');
     d = 0;
@@ -55,7 +62,11 @@ function addRomanSignsToArray(m, d, c, l, x, v, rest) {
     let romanArray = [];
     addRomanValue(m, romanArray, 'M');
     addRomanValue(d, romanArray, 'D');
+    // TODO If you make simmilar operations each time this means there could be a loop
+    //  every time you check whetere the occurance equals 4 then u assign letter + higher letter
+    //  its not hard to make it in a loop
     if (c !== 0) {
+        // TODO what does 4 mean? extract to constant variable
         if (c === 4) {
             romanArray.push('CD');
         }
