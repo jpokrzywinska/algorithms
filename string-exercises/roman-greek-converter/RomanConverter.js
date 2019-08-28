@@ -1,25 +1,18 @@
+import {RomanGreekValue} from "./RomanGreekValue";
+
 export default class RomanConverter {
-
-
     constructor() {
-        this.romanValues = [
-            {symbol: "M", value: 1000, substractive: false},
-            {symbol: "D", value: 500, substractive: false},
-            {symbol: "C", value: 100, substractive: true},
-            {symbol: "L", value: 50, substractive: false},
-            {symbol: "X", value: 10, substractive: true},
-            {symbol: "V", value: 5, substractive: false},
-            {symbol: "I", value: 1, substractive: true}
-        ];
+        this.romanGreekValue = new RomanGreekValue();
+        this.greekValues = this.romanGreekValue.values;
     }
 
     convert(greekNumber) {
 
         let rest, result = '';
         rest = greekNumber;
-        for (let i = 0; i < this.romanValues.length;) {
-            const value = this.romanValues[i].value;
-            const symbol = this.romanValues[i].symbol;
+        for (let i = 0; i < this.greekValues.length;) {
+            const value = this.greekValues[i].value;
+            const symbol = this.greekValues[i].symbol;
             const successor = this.findSuccessor(value);
             if (rest >= value) {
                 result = result.concat(symbol);
@@ -36,8 +29,8 @@ export default class RomanConverter {
     }
 
     findSuccessor(value) {
-        this.romanValues[0];
-        let result = this.romanValues.filter(romanValue => romanValue.value < value && romanValue.substractive);
+        this.greekValues[0];
+        let result = this.greekValues.filter(romanValue => romanValue.value < value && romanValue.substractive);
         return result[0];
     }
 }

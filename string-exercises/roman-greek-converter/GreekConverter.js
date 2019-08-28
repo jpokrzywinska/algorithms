@@ -1,51 +1,28 @@
+import {RomanGreekValue} from "./RomanGreekValue";
+
 export default class GreekConverter {
 
-     constructor(){
-
+    constructor() {
+        this.romanGreekValue = new RomanGreekValue();
+        this.greekValues = this.romanGreekValue.values;
     }
 
 // TODO what happens when someone provide incorrect number e.g. ABD
 
 
-     convert(romanNumber) {
+    convert(romanNumber) {
         // if ()) {
         //     throw new Error("Incorrect number");
         // }
+        //
         let sum = 0;
         romanNumber = romanNumber.split('');
-        //TODO try to use reduce instead of for
         for (let i = 0; i < romanNumber.length - 1; i++) {
-            if (this.getGreekValue(romanNumber[i]) < this.getGreekValue(romanNumber[i + 1])) {
-                sum -= this.getGreekValue(romanNumber[i]);
-            }
-            else {
-                sum += this.getGreekValue(romanNumber[i]);
-            }
+            const greekNum1 = this.romanGreekValue.getGreekValue(romanNumber[i]);
+            const greekNum2 = this.romanGreekValue.getGreekValue(romanNumber[i + 1]);
+            greekNum1 < greekNum2 ? sum -= greekNum1 : sum += greekNum1;
         }
-        sum += this.getGreekValue(romanNumber[romanNumber.length - 1]);
+        sum += this.romanGreekValue.getGreekValue(romanNumber[romanNumber.length - 1]);
         return sum;
     }
-
-    getGreekValue(romanValue) {
-        switch (romanValue) {
-            case 'M':
-                return 1000;
-            case 'D':
-                return 500;
-            case 'C':
-                return 100;
-            case 'L':
-                return 50;
-            case 'X':
-                return 10;
-            case 'V':
-                return 5;
-            case 'I':
-                return 1;
-        }
-    }
 }
-
-
-
-
