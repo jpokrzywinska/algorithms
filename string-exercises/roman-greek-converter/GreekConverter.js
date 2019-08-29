@@ -7,16 +7,14 @@ export default class GreekConverter {
         this.greekValues = this.romanGreekValue.values;
     }
 
-// TODO what happens when someone provide incorrect number e.g. ABD
-
-
     convert(romanNumber) {
-        // if ()) {
-        //     throw new Error("Incorrect number");
-        // }
-        //
-        let sum = 0;
         romanNumber = romanNumber.split('');
+        romanNumber.forEach(value => {
+            if (!this.validate(value)) {
+                throw new Error("Incorrect number")
+            }
+        });
+        let sum = 0;
         for (let i = 0; i < romanNumber.length - 1; i++) {
             const greekNum1 = this.romanGreekValue.getGreekValue(romanNumber[i]);
             const greekNum2 = this.romanGreekValue.getGreekValue(romanNumber[i + 1]);
@@ -24,5 +22,10 @@ export default class GreekConverter {
         }
         sum += this.romanGreekValue.getGreekValue(romanNumber[romanNumber.length - 1]);
         return sum;
+    }
+
+    validate(romanValue) {
+        const value = this.greekValues.filter(val => val.symbol === romanValue)[0];
+        return value ? true : false;
     }
 }
